@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  web:
+    build:
+      context: docker/web
+    volumes:
+      - ./:/app
+    ports:
+      - "80:80"
+
+  encore:
+    image: node:17
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: node node_modules/.bin/encore dev --watch
+    depends_on:
+      - web

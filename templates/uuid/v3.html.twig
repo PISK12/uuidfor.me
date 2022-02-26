@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <main>
+        {{ include('uuid/index.html.twig',{values :values, name:'Version 3 Uuid'}) }}
+        <section>
+            <form method="get">
+                <label>
+                    Namespace:
+                    <select name="namespace">
+                        <option value="NAMESPACE_DNS" {% if namespace == 'NAMESPACE_DNS' or namespace == '' %}selected{% endif %}>
+                            DNS
+                        </option>
+                        <option value="NAMESPACE_URL" {% if namespace == 'NAMESPACE_URL' %}selected{% endif %}>
+                            URL
+                        </option>
+                        <option value="NAMESPACE_OID" {% if namespace == 'NAMESPACE_OID' %}selected{% endif %}>
+                            OID
+                        </option>
+                        <option value="NAMESPACE_X500" {% if namespace == 'NAMESPACE_X500' %}selected{% endif %}>
+                            X500
+                        </option>
+                        <option value="CUSTOM" {% if namespace == 'CUSTOM' %}selected{% endif %}>
+                            Custom
+                        </option>
+                    </select>
+                    {% if namespace == 'CUSTOM' %}
+                        <input name="value" value="{{ values|first }}" placeholder="2e0de186-9731-11ec-93ee-91efcced1f62">
+                    {% endif %}
+                </label>
+                <label>
+                    Name:
+                    <input type="text" value="{{ name }}" name="name">
+                </label>
+                <button type="submit">Generate</button>
+            </form>
+        </section>
+    </main>
+{% endblock %}

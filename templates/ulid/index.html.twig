@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <main>
+        <section>
+            {{ include('uuid/index.html.twig',{values :values, name:'Ulid'}) }}
+            <form method="get">
+                <label>
+                    Quantity:
+                    <input type="number" name="quantity" min="0" max="200" value="{{ quantity }}">
+                </label>
+                <button type="submit">Next</button>
+            </form>
+        </section>
+    </main>
+{% endblock %}

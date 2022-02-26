@@ -1,0 +1,12 @@
+<header>
+    <h1>Online {{ name }} Generator</h1>
+    {% if values|length == 1 %}
+        <p>{{ values | first }}</p>
+        {% else %}
+            <ul>
+                {% for value in values %}
+                    <li>{{ value }}</li>
+                {% endfor %}
+            </ul>
+    {% endif %}
+</header>
