@@ -9,7 +9,7 @@ services:
       - "80:80"
 
   encore:
-    image: node:17
+    image: node:15
     working_dir: /app
     volumes:
       - ./:/app

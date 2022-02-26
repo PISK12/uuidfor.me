@@ -9,10 +9,8 @@
         {% endblock %}
 
         {{ encore_entry_script_tags('app') }}
-        {% block javascripts %}
-        {% endblock %}
     </head>
-    <body>
+    <body class="{% if app.request.cookies.get('COLOR_MODE')=='dark' %}darkMode{% endif %}">
         <header>
             <nav>
                 <ul>
@@ -25,10 +23,15 @@
                     <li><a href="{{ path('app_uuid_v6') }}">Version 6 Uuid</a></li>
                     <li><a href="{{ path('app_uuid_nil') }}">Nil Uuid</a></li>
                 </ul>
+                <ul>
+                    <li><a class="color-changer" href="#">{% if app.request.cookies.get('COLOR_MODE')=='dark' %}Light Mode{% else %}Dark Mode{% endif %}</a></li>
+                    <li><a href="https://github.com/PISK12/uuidfor.me">GitHub</a></li>
+                </ul>
             </nav>
         </header>
         {% block body %}{% endblock %}
     <footer>
     </footer>
+        {% block javascripts %}{% endblock %}
     </body>
 </html>
